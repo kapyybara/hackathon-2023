@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./settings.prd.js.js:/var/chatgpt-api/settings.prd.js.js:cached
+    ports:
+      - '${APP_PORT:-3000}:3000'
